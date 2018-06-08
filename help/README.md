@@ -6,4 +6,6 @@
 
 
 
-{% asset_img ./effect_picture.png 40 30 feifei%} 
+
+
+![img{40}](./effect_picture.png) 
