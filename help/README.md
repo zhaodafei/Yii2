@@ -8,4 +8,4 @@
 
 
 
-![img{40}](./effect_picture.png) 
+![img{40px}](./effect_picture.png) 
