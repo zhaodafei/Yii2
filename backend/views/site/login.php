@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\captcha\Captcha;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -16,6 +17,19 @@ $fieldOptions1 = [
 $fieldOptions2 = [
     'options' => ['class' => 'form-group has-feedback'],
     'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
+];
+
+$fieldOptions3 = [
+    'options' => [
+        'id' => "loginform-verifycode",
+        'class' => "form-control",
+        'name' => "LoginForm[verifyCode]",
+        'placeholder' => '输入验证码',
+    ],
+    'template' => '<div class="row">
+                        <div class="col-lg-3" style="margin-right: 20px">{image}</div>
+                        <div class="col-lg-6">{input}</div>
+                    </div>',
 ];
 ?>
 
@@ -37,6 +51,12 @@ $fieldOptions2 = [
             ->field($model, 'password', $fieldOptions2)
             ->label(false)
             ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+
+        <?= $form
+            ->field($model, 'verifyCode')
+            ->widget(Captcha::className(), $fieldOptions3)
+            ->label(false)?>
+
 
         <div class="row">
             <div class="col-xs-8">

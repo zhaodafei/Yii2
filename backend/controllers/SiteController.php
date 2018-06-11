@@ -30,6 +30,10 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['captcha'],
+                        'allow' => true,
+                    ],
                 ],
             ],
             'verbs' => [
@@ -49,6 +53,16 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'height' => 35,
+                'width' => 100,
+                'minLength' => 5,
+                'maxLength' => 5,
+                'backColor'=>0xc9eaff,
+                // 'foreColor'=>0xffffff,     //字体颜色
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
         ];
     }
